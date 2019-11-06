@@ -19,7 +19,6 @@ def write_data(worksheet,testcases):
     for tc in testcases:
         wl = tc.toList()
         for l in wl:
-            print(l)
             for i,j in enumerate(l):
                 worksheet.write(row,i,j)
             row+=1
@@ -31,5 +30,5 @@ def generate_excel(testcases, p):
     worksheet = workbook.add_sheet('My Worksheet')
     write_header(worksheet)
     write_data(worksheet, testcases)
-    filename = os.path.abspath(p).rpartition(".")[0]+".xls"
+    filename = os.path.abspath(p).rpartition(".")[0]+".xlsx"
     workbook.save(filename)

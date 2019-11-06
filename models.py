@@ -32,7 +32,7 @@ class TestCase(object):
         elif "priority-3" in marker:
             p = "低"
         else:
-            raise Exception("no usefull marker in :"+self.testName)
+            p = ""
         return p
 
     @property
