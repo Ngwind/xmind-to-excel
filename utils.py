@@ -9,14 +9,20 @@ import os
 def write_header(worksheet):
     header = ["测试案例路径", "测试案例名称", "测试案例描述",
               "计划执行时长(分钟)", "步骤描述", "预期结果", "优先级", "测试模块", "执行方式", "测试类型"]
-    n = 0
-    for i in header:
+    
+    for n,i in enumerate(header):
         worksheet.write(0, n, i)
         n += 1
 
 def write_data(worksheet,testcases):
-    pass
-
+    row = 1
+    for tc in testcases:
+        wl = tc.toList()
+        for l in wl:
+            print(l)
+            for i,j in enumerate(l):
+                worksheet.write(row,i,j)
+            row+=1
 
 def generate_excel(testcases, p):
     """将testcase列表转换成excel文件

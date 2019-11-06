@@ -12,7 +12,7 @@ class TestCase(object):
         self.topicElement = topicElement
         self.testName = topicElement.getTitle()
         self.desc = desc
-        self.execTime = exec
+        self.execTime = execTime
         self.module = module
         self.execType = execType
         self.testType = testType
@@ -40,5 +40,22 @@ class TestCase(object):
         ts_list = []
         for i in self.topicElement.getSubTopics():
             for j in i.getSubTopics():
-                ts_list.append([i.getTitle(), j[0].getTitle()])
+                ts_list.append([i.getTitle(), j.getTitle()])
         return ts_list
+
+    def toList(self):
+        rel = []
+        l = len(self.testStep)
+        if l == 0:
+            rel.append([self.testSuite, self.testName, self.desc, self.execTime,
+                        "", "", self.priority, self.module, self.execType, self.testType])
+        else:
+            for i, ts in enumerate(self.testStep):
+                if i == 0:
+                    rel.append([self.testSuite, self.testName, self.desc, self.execTime, ts[0],
+                                ts[1], self.priority, self.module, self.execType, self.testType])
+                else:
+                    rel.append(["", "", "", "", ts[0],
+                                ts[1], "", "", "", ""])
+
+        return rel
