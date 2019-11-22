@@ -40,6 +40,8 @@ class TestCase(object):
     def testStep(self):
         ts_list = []
         for i in self.topicElement.getSubTopics():
+            if i.getSubTopics() is None:
+                ts_list.append([i.getTitle(), ''])
             for j in i.getSubTopics():
                 ts_list.append([i.getTitle(), j.getTitle()])
         return ts_list
