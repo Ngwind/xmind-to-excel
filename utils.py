@@ -8,7 +8,7 @@ from prettytable import PrettyTable
 
 
 def get_config(key):
-    with open("./config.json") as f:
+    with open("./config.json", encoding='utf-8') as f:
         conf = json.load(f)
     return conf[key]
 
@@ -22,6 +22,7 @@ def write_header(worksheet, pt):
     pt.align["优先级"]="c"
     pt.align["执行方式"]="c"
     pt.align["测试类型"]="c"
+
 
 def write_data(worksheet, testcases, pt):
     for tc in testcases:
