@@ -3,19 +3,20 @@
 """
 from typing import List, Optional
 from xmind.core.topic import TopicElement
+from utils import  get_config
 
 
 class TestCase(object):
 
-    def __init__(self, testSuite: str, topicElement: TopicElement, desc="", execTime="", module="", execType="手工", testType="WEB测试"):
+    def __init__(self, testSuite: str, topicElement: TopicElement, desc="", execTime="", module="", execType="", testType=""):
         self.testSuite = testSuite
         self.topicElement = topicElement
         self.testName = topicElement.getTitle()
         self.desc = desc
         self.execTime = execTime
         self.module = module
-        self.execType = execType
-        self.testType = testType
+        self.execType = get_config("default_execType")
+        self.testType = get_config("default_testType")
 
     def __str__(self):
         r = [self.testSuite, self.testName, self.desc, self.execTime, self.testStep,
