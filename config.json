@@ -1,5 +1,5 @@
 {
-    "default_prefix":"",
+    "default_prefix":"系统测试用例\\",
     "default_execType":"手工",
     "default_testType":"WEB测试"
 }
